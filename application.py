@@ -21,10 +21,10 @@ def index():
         username = regitration_form.username.data
         password = regitration_form.password.data
 
-        #check username exists or not
-        user_object = User.query.filter_by(username=username).first()
-        if user_object:
-            return "Someone else has taken this username!"
+        """To check username exists or not
+            Defined a function in wtform_fields.py file for this."""
+
+
 
         #Adding the user to the DATABASE
         user = User(username=username, password=password)
