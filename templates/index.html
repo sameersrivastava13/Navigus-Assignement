@@ -1,3 +1,5 @@
+{% from 'form_helper.html' import displayField %}
+
 {% extends "prelogin.html" %}
 
 {% block title %}Registration{% endblock %} 
@@ -12,37 +14,9 @@
 
 <form action="{{ url_for('index')}}" method="POST" novalidate>
 
-	<div>
-		 {{ form.username(class_="form-control", placeholder='Username',
-    	autocomplete='off' , autofocus=True) }}
-
-		<ul>
-			{%for error in form.username.errors %}
-			<li>{{ error }}</li>
-			{% endfor %}
-		</ul>
-
-    </div>
-	<div>
-		 {{ form.password(class_="form-control", placeholder='Password') }}
-
-		<ul>
-			{%for error in form.password.errors %}
-			<li>{{ error }}</li>
-			{% endfor %}
-		</ul>
-
-    </div>
-	<div>
-		 {{ form.confirm_pass(class_="form-control", placeholder='Confirm Password') }}
-
-		<ul>
-			{%for error in form.confirm_pass.errors %}
-			<li>{{ error }}</li>
-			{% endfor %}
-		</ul>
-
-    </div>
+	 {{ displayField(form.username,"Username",autocomplete="off",autofocus=true)}}
+	 {{ displayField(form.password,"Password")}}
+	 {{ displayField(form.confirm_pass,"Retype Password")}}
 
 	<!--Create button-->
 	<div>
