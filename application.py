@@ -44,7 +44,7 @@ def index():
         db.session.add(user)
         db.session.commit()
 
-        # Flashing a message here
+        # Flashing a message after registration
         flash("Registered Successfully! Now,Please login.", "success")
         return redirect(url_for('login'))
 
@@ -63,21 +63,19 @@ def login():
     return render_template("login.html", form=login_form)
 
 
-
-
 @app.route("/chat", methods=['GET', 'POST'])
 def chat():
     if not current_user.is_authenticated:
-        return "Please Login!"
+        flash("Please Login!", "danger")
+        return redirect(url_for('login'))
     return "chat with me"
-    """flash("Please Login!","danger")
-    return redirect(url_for("login"))"""
+
     #return render_template('write.html', username=current_user.username,rooms=ROOMS)
 
 @app.route("/logout",methods=['GET'])
 def logout():
     logout_user()
-    #flash("You have Logged out successfully!","success")
+    flash("You have Logged out successfully!","success")
     return redirect(url_for("login"))
 
 """@socketio.on('join')
