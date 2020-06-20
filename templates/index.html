@@ -4,10 +4,57 @@
 
 {% block content %}
 
-<h2>
-    Login Now!
-</h2>
-<p>Enter your username/password to start.</p>
+	<h2>
+    	Login Now!
+	</h2>
+
+	<p>Enter your username/password to start.</p>
+
+<form action="{{ url_for('index')}}" method="POST" novalidate>
+
+	<div>
+		 {{ form.username(class_="form-control", placeholder='Username',
+    	autocomplete='off' , autofocus=True) }}
+
+		<ul>
+			{%for error in form.username.errors %}
+			<li>{{ error }}</li>
+			{% endfor %}
+		</ul>
+
+    </div>
+	<div>
+		 {{ form.password(class_="form-control", placeholder='Password') }}
+
+		<ul>
+			{%for error in form.password.errors %}
+			<li>{{ error }}</li>
+			{% endfor %}
+		</ul>
+
+    </div>
+	<div>
+		 {{ form.confirm_pass(class_="form-control", placeholder='Confirm Password') }}
+
+		<ul>
+			{%for error in form.confirm_pass.errors %}
+			<li>{{ error }}</li>
+			{% endfor %}
+		</ul>
+
+    </div>
+
+	<!--Create button-->
+	<div>
+		{{ form.submit_button }}
+	</div>
+	<!--To avoid malicious attacks like csrf attack, used csrf_token which is a hidden tag-->
+
+	{{ form.csrf_token }}
+
+       
+
+</form>
 
 
 {% endblock %}

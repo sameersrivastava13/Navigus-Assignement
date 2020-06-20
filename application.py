@@ -7,7 +7,9 @@ app.secret_key = 'secret-key'
 
 @app.route("/",methods= ['GET','POST'])
 def index():
-    regitration_form = RegistrationForm
+    regitration_form = RegistrationForm()
+    if regitration_form.validate_on_submit():
+        return "Great success"
     return render_template("index.html",form = regitration_form)
 
 if __name__ == '__main__':
