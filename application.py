@@ -51,7 +51,7 @@ def index():
         # password hashing for security
         hashed_pswd = pbkdf2_sha256.hash(
             password
-        )  # take cares of both 16byte salt and iteartions (29000 by default)
+        )  # take cares of both 16 byte salt and iteartions (29000 by default)
 
         """To check username exists or not
                     Defined a function in wtform_fields.py file for this."""
