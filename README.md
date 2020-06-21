@@ -10,4 +10,5 @@ Registration Number : 170102036
 
 
 
-![navigus1](https://user-images.githubusercontent.com/56088741/85225926-1d1b3000-b3f2-11ea-9537-7bd3ce741bf1.PNG)
+![navigus2](https://user-images.githubusercontent.com/56088741/85225997-9450c400-b3f2-11ea-9a8f-6bd33f7eacf4.PNG)
+
