@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
         var socket = io();
-        let room;
+        let room = "Python";
+        joinRoom("Python");
 
         //display incoming messages
         socket.on('message', data => {
@@ -8,10 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const span_username = document.createElement("span");
             const span_timestamp = document.createElement("span");
             const br = document.createElement("br");
+            
+            if (data.username){
+
             span_username.innerHTML = data.username;
             span_timestamp.innerHTML = data.timestamp;
             p.innerHTML = span_username.outerHTML + br.outerHTML + data.msg + br.outerHTML + span_timestamp.outerHTML;
             document.querySelector('#display-message-section').append(p);
+            } else{
+                printSysMsg(data.msg);
+            }
+
+            
         });
 
         //send message
@@ -28,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             p.onclick = () => {
                 let newRoom = p.innerHTML;
                 if (newRoom == room) {
-                    msg = `You are already in ${room} room.`
+                    msg = `You are already in ${room} document.`
                     printSysMsg(msg);
                 }else{
                     leaveRoom(room);
@@ -37,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        //leave room
+        //leaving the room
         function leaveRoom(room){
             socket.emit('leave',{'username': username, 'room': room});
         }
 
-        //join room
+        //joining the room
         function joinRoom(room){
             socket.emit('join',{'username': username, 'room': room});
             //clear message area
@@ -58,3 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 })
+

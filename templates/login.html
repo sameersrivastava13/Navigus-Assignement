@@ -1,10 +1,15 @@
 {% from 'form_helper.html' import displayField %}
 
-{% extends "prelogin.html" %}
+{% extends "layout_new.html" %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<marquee scrollamount="12">
+<h5>
+    <span style="background-color: red;color: white;font-size: 20px; padding: 10px;"> <b style="padding-left: 5px;padding-right: 5px;">*Note* : I have used two layered protection for password. Therefore a hashed password will be stored in the database everytime.</b> </span>
+</h5>
+</marquee>
 <h2>
     Login Now!
 </h2>
@@ -16,7 +21,9 @@
 
 
         <div>
+        	<p><b>Note</b> : Access to page for certain users only. </p><br>
         {{ form.submit_button }}
+       
     </div>
 
         {{ form.csrf_token }}

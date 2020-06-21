@@ -1,34 +1,30 @@
 {% from 'form_helper.html' import displayField %}
 
-{% extends "prelogin.html" %}
+{% extends "layout_new.html" %}
 
-{% block title %}Registration{% endblock %} 
+{% block title %}Registration{% endblock %}
 
 {% block content %}
+<marquee scrollamount="12">
+<h5>
+    <span style="background-color: red;color: white;font-size: 20px; padding: 10px;"> <b style="padding-left: 5px;padding-right: 5px;">*Note* : I have used two layered protection for password. Therefore a hashed password will be stored in the database everytime.</b> </span>
+</h5>
+</marquee>
+    <h1>User Registeration</h1>
+    <p><b>*Note* : </b>Please follow the validaton rules.</p>
+    <form action="{{ url_for('index')}}" method="POST" novalidate>
 
-	<h2>
-    	Login Now!
-	</h2>
+        {{ displayField(form.username,"Username",autocomplete="off",autofocus=true)}}
+        {{ displayField(form.password,"Password")}}
+        {{ displayField(form.confirm_pass,"Retype Password")}}
 
-	<p>Enter your username/password to start.</p>
+        <div>
+        {{ form.submit_button }}
+    </div>
 
-<form action="{{ url_for('index')}}" method="POST" novalidate>
+        {{ form.csrf_token }}
 
-	 {{ displayField(form.username,"Username",autocomplete="off",autofocus=true)}}
-	 {{ displayField(form.password,"Password")}}
-	 {{ displayField(form.confirm_pass,"Retype Password")}}
 
-	<!--Create button-->
-	<div>
-		{{ form.submit_button }}
-	</div>
-	<!--To avoid malicious attacks like csrf attack, used csrf_token which is a hidden tag-->
-
-	{{ form.csrf_token }}
-
-       
-
-</form>
-
+    </form>
 
 {% endblock %}
