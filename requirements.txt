@@ -7,7 +7,6 @@ cffi==1.14.0
 chardet==3.0.4
 chatterbot-corpus==1.2.0
 click==7.1.2
-COVID19Py==0.3.0
 distlib==0.3.0
 filelock==3.0.12
 Flask==1.1.2
